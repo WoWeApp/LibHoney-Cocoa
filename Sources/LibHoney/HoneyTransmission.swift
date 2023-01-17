@@ -27,7 +27,7 @@ private struct EndpointIdentifier: Hashable {
 
 
 private struct EventJSON: Codable {
-    let timestamp: String
+    let time: String
     let samplerate: UInt
     let data: [String: HoneyEventType]
 }
@@ -156,7 +156,7 @@ class HoneyTransmission {
         
         // Transform the data to the desired output format
         let dataArray = dataQueue.map { (event) -> EventJSON in
-            return EventJSON(timestamp: formatter.string(from: event.timestamp),
+            return EventJSON(time: formatter.string(from: event.timestamp),
                              samplerate: event.sampleRate, data: event.data)
         }
         
