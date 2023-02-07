@@ -62,5 +62,23 @@ public class HoneyEvent: NSObject {
         data[key] = .bool(value)
         return self
     }
-    
+}
+
+public extension HoneyEvent {
+    func dataObject() -> [String: Any] {
+        var dataObject: [String: Any] = [:]
+        for (key, value) in data {
+            switch value {
+            case .bool(let boolValue):
+                dataObject[key] = boolValue
+            case .double(let doubleValue):
+                dataObject[key] = doubleValue
+            case .int(let intValue):
+                dataObject[key] = intValue
+            case .string(let stringValue):
+                dataObject[key] = stringValue
+            }
+        }
+        return dataObject
+    }
 }
